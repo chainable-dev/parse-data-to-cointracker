@@ -23,11 +23,11 @@ def parse_csv(file_name='stellarx-trade-history-2020-12-31T18_31_27-08_00.csv'):
     with open(file_name, "r", newline='') as stellarFile:
         csv_reader = csv.reader(stellarFile, delimiter=',')
         next(csv_reader)
-        rowHeader = ['Date', 'Received Quantity', 'Received Currency', 'Sent Quantity', 'Sent Currency', 'Fee Amount',
+        row_header = ['Date', 'Received Quantity', 'Received Currency', 'Sent Quantity', 'Sent Currency', 'Fee Amount',
                      'Fee Currency', 'Tag']
         with open('output.csv', 'w', newline='') as csvWritefile:
             csvwriter = csv.writer(csvWritefile, delimiter=',')
-            csvwriter.writerow(rowHeader)
+            csvwriter.writerow(row_header)
             for row in csv_reader:
                 output = translate(row[0], row[1], row[2], row[4], row[7])
                 csvwriter.writerow(output)
