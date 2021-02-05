@@ -30,15 +30,14 @@ def translate(date: str, transaction: str, currency: str, amount: str, account: 
 
 with open('../sample/cointracker_csv_import_v4 (3).csv', 'r', newline='') as cointracker:
     with open('../inputs/anchorusd_transactions.csv', 'r', newline='') as anchorcsv:
-        with open('output/translated.csv', 'w+') as newFile:
+        with open('translated.csv', 'w+') as newFile:
             anchorRead: str = anchorcsv.readline()
             output = [
                 'Date,Received Quantity,Received Currency,Sent Quantity,Sent Currency,Fee Amount,Fee Currency,Tag\n']
             for row in anchorcsv:
                 items = row.split(',')
 
-                output += translate(items[0].replace(" UTC", ""), items[1], items[2], items[3], items[8], items[6],
-                                    items[7])
+                output += translate(items[1].replace(" UTC", ""), items[2], items[3], items[4], items[9], items[7], items[8])
             newFile.writelines(output)
         newFile.close()
 
